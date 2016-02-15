@@ -1,3 +1,49 @@
 
 # tasks file for totti.plex
 
+ - name: Install prerequesite
+   apt: 
+     pkg = {{ package }}
+     state = present
+     with_items: 
+       - avahi-daemon
+       - avahi-utils
+       - bind9-host
+       - dbus
+       - geoip-database
+       - libapparmor1
+       - libavahi-client3
+       - libavahi-common-data
+       - libavahi-common3
+       - libavahi-core7
+       - libbind9-90
+       - libdaemon0
+       - libdns99
+       - libgeoip1
+       - libglib2.0-0
+       - libglib2.0-data
+       - libisc95
+       - libisccc90
+       - libisccfg90
+       - liblwres90
+       - libnss-mdns
+       - libpam-systemd
+       - libsystemd-daemon0
+       - libsystemd-login0
+       - libxml2
+       - sgml-base
+       - shared-mime-info
+       - systemd-services
+       - systemd-shim
+       - xml-core
+
+ - name: Download Plex pkg
+   get_url: 
+     url = {{ plex_url }}
+     dest = /root/{{ plex_pkg }}
+
+ - name: Install Plex
+   apt: 
+     deb = "/root/{{ plex_pkg }}"
+     state = present
+
