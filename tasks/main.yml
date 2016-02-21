@@ -54,6 +54,7 @@
  - name: Chown Plex Home Dir
    file:
      dest={{ plex_home_dir }}
+     state=directory
      owner=plex
 
 # Start it
