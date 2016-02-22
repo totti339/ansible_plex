@@ -56,6 +56,7 @@
      dest={{ plex_home_dir }}
      state=directory
      owner=plex
+     mode=0755
 
 # Start it
  - name: Ensure plex is running
